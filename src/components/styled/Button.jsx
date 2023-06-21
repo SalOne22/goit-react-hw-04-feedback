@@ -22,6 +22,10 @@ export const Button = styled.button`
     background-color: ${props => props.theme.colors.brand};
     color: ${props => props.theme.colors.white};
   }
+
+  &:active {
+    background-color: ${props => props.theme.colors.brandAlt};
+  }
 `;
 
 Button.defaultProps = {
