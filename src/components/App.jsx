@@ -3,6 +3,9 @@ import { ThemeProvider } from 'styled-components';
 
 import { Section } from './Section';
 import { FeedbackOptions } from './FeedbackOptions';
+import { Statistics } from './Statistics';
+import { Notification } from './Notification';
+
 import theme from './styled/theme';
 
 const OPTIONS = [
@@ -35,6 +38,16 @@ export class App extends Component {
     });
   };
 
+  countTotalFeedback() {
+    return this.state.good + this.state.neutral + this.state.bad;
+  }
+
+  countPositiveFeedbackPercentage() {
+    // Returns NaN if there are no votes.
+    // Which is probably okay because we don't see it until there are no votes.
+    return Math.round((this.state.good / this.countTotalFeedback()) * 100);
+  }
+
   render() {
     return (
       <ThemeProvider theme={theme}>
@@ -44,7 +57,19 @@ export class App extends Component {
             onLeaveFeedback={this.leaveFeedback}
           />
         </Section>
-        <Section title="Statistics"></Section>
+        <Section title="Statistics">
+          {this.countTotalFeedback() ? (
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            <Notification message="No feedback given" />
+          )}
+        </Section>
       </ThemeProvider>
     );
   }
