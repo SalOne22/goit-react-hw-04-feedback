@@ -5,6 +5,21 @@ import { Section } from './Section';
 import { FeedbackOptions } from './FeedbackOptions';
 import theme from './styled/theme';
 
+const OPTIONS = [
+  {
+    name: 'Good',
+    id: 'good',
+  },
+  {
+    name: 'Neutral',
+    id: 'neutral',
+  },
+  {
+    name: 'Bad',
+    id: 'bad',
+  },
+];
+
 export class App extends Component {
   state = {
     good: 0,
@@ -25,20 +40,7 @@ export class App extends Component {
       <ThemeProvider theme={theme}>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={[
-              {
-                name: 'Good',
-                id: 'good',
-              },
-              {
-                name: 'Neutral',
-                id: 'neutral',
-              },
-              {
-                name: 'Bad',
-                id: 'bad',
-              },
-            ]}
+            options={OPTIONS}
             onLeaveFeedback={this.leaveFeedback}
           />
         </Section>
