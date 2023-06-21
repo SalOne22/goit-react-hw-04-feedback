@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import theme from 'components/styled/theme';
+import theme from 'theme';
 
 export const Text = styled.p`
   font-size: ${props => props.theme.fontSizes.medium};

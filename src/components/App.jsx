@@ -6,7 +6,7 @@ import { FeedbackOptions } from './FeedbackOptions';
 import { Statistics } from './Statistics';
 import { Notification } from './Notification';
 
-import theme from './styled/theme';
+import theme from 'theme';
 
 const OPTIONS = [
   {
